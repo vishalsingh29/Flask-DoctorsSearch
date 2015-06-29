@@ -1,0 +1,127 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-icons/communication-icons.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<polymer-element name="doctor-card">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      padding: 10px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-family: sans-serif;
+      font-weight: 300;
+      border: solid;
+      border-width: 1px;
+      border-color: #dedede;
+    }
+    .card {
+      margin-bottom: 10px;
+      display: flex;
+      display: -moz-flex;
+      flex-direction: row;
+    }
+    .image{
+      flex: 1;
+      -moz-flex: 1;
+    }
+    .doctor-info{
+      flex: 6;
+      -moz-flex: 6;
+    }
+    .clinic_info{
+      flex: 3;
+      -moz-flex: 3;
+    }
+    paper-button {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      color: #636363;
+    }
+    polyfill-next-selector{content: '.name h2';}
+    .name ::content h2{
+      margin: 0;
+      margin-bottom: 5px;
+      font-size: 18px;
+      font-weight: 400;
+      color: #02a6d8;
+    }
+    polyfill-next-selector{content: '.qualification p';}
+    .qualification ::content p{
+         margin: 0;
+         margin-bottom: 5px;
+         font-size: 14px;
+         font-weight: 400;
+         color: #6a6a6a;
+    }
+    polyfill-next-selector{content: '.experience p';}
+    .experience ::content p{
+         margin: 0;
+         margin-bottom: 5px;
+         font-size: 14px;
+         color: #979797;
+    }
+    polyfill-next-selector{content: '.speciality p';}
+    .speciality ::content p{
+         margin: 0;
+         margin-bottom: 5px;
+         font-size: 14px;
+         color: #979797;
+    }
+    polyfill-next-selector{content: '.clinic-name p';}
+    .clinic-name ::content p{
+         margin: 0;
+         margin-bottom: 5px;
+         font-size: 14px;
+         color: #979797;
+    }
+    :host([favorite]) paper-button{
+      color: #da4336;
+    }
+    
+    </style>
+    <div class="card">
+      <div class="image" layout horizontal center>
+        <content select="img"></content>
+      </div>
+      <div class="doctor-info">
+        <div class="name"><content select="h2"></content></div>
+        <div class="qualification"><content select="p"></content></div>
+        <div class="experience"><content select="p"></content></div>
+        <div class="speciality"><content select="p"></content></div>
+        <div class="clinic-name"><content select="p"></content></div>
+      </div>
+      <div class="clinic-info">
+      </div>
+    </div>
+
+    <content></content>
+
+    <paper-button
+      id="favicon"
+      icon="location-on"
+      on-tap="{{getLocation}}">
+      <core-icon icon="communication:location-on"></core-icon>
+    </paper-button>
+    
+  </template>
+  <script>
+  Polymer({
+    publish: {
+      favorite: {
+        value: false,
+        reflect: true
+      }
+    },
+
+    getLocation: function(event, detail, sender){
+      this.favorite = !this.favorite;
+      this.fire('favourite-tap');
+    }
+  });
+  </script>
+</polymer-element>

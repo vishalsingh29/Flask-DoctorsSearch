@@ -1,0 +1,60 @@
+<head>
+	<title>Admin Page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		pre {
+			display: inline;
+		}
+		.table thead th {
+			background-color: #82CAFF;
+		}
+	</style>
+</head>
+{% if errMsg %}
+<strong> {{ errMsg }}</strong><br>
+{% endif %}
+<div class="container">
+	<h2 class="text-center" style="color:#00BFFF">All Doctors</h2>
+<div class="text-center" style="color:#00BFFF">
+	<button class="btn btn-info"><a href="/addDoctor">Add Doctor</a></button>
+	<button class="btn btn-info"><a href="/viewAllClinics">View All Clinics</a></button>
+</div>
+	{% if doctors %}
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Specialization</th>
+					<th>Phone</th>
+					<th>Email</th>
+					<th>Experience</th>
+					<th>Options</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for doc in doctors %}
+				<tr>
+					<th>{{ doc.name }}</th>
+					<th>{{ doc.speciality}}</th>
+					<th> {{ doc.phoneNumber }}</th>
+					<th>{{ doc.email }}</th>
+					<th>{{ doc.experience }} years </th>
+					<th> <button class="btn btn-info btn-xs"><a href = "/editDoctor/{{ doc.id }}">Edit</a></button>
+						 <button class="btn btn-info btn-xs"><a href = "/delete/{{ doc.id }}">Delete</a></button>
+						 <button class="btn btn-info btn-xs"><a href = "/addClinic/{{ doc.id }}">Add Clinic</a></button>
+						 <button class="btn btn-info btn-xs"><a href = "/viewClinics/{{ doc.id }}">View Clinics</a></button>
+					</th>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<h2 style = "color:#00BFFF">No Doctors Added.</h2>
+	{% endif %}
+</div>
+
+

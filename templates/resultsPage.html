@@ -1,0 +1,295 @@
+<!doctype html>
+<html>
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			width: 100%
+			font-family: 'Open Sans',"Segoe UI","Century Gothic","Ubuntu","Arial",sans-serif;
+			background: #f7f7f7;
+		}
+		paper-input-decorator /deep/ .focused-underline {
+    		background-color: #02a6d8;
+		}
+		paper-input-decorator /deep/ .unfocused-underline {
+    		background-color: grey;
+		}
+		paper-input-decorator{
+			margin-top: 5px;
+			color: #333;
+			font-style: italic;
+			font-size: 14px;
+			border: solid;
+			border-width: 1px;
+			padding-left: 7px;
+			padding-right: 7px; 
+			margin-bottom: 5px;
+			background: white;
+			border-radius: 5px;
+			border-color: #02a6d8
+		}
+		paper-checkbox{
+			flex: 1;
+			-moz-flex: 1;
+		}
+		paper-checkbox::shadow #ink[checked] {
+  			color: #4285f4;
+		}
+		paper-fab{
+			background: #02a6d8;
+		}
+		.header{
+			background: transparent;
+			height: 50px;
+			width: 100%;
+			display: flex;
+			display: -moz-flex;
+			flex-direction: row;
+			-moz-flex-direction: row;
+			box-shadow: 2px 1px 2px #888888;
+		}
+		.header-left-items{
+			margin-top: 10px;
+			margin-left: 20px; 
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.header-middle-items{
+			flex: 4;
+			-moz-flex: 4;
+			display: flex;
+			display: -moz-flex;
+			flex-direction: row;
+			-moz-flex-direction: row;
+		}
+		.search-fab{
+			margin-top: 10px;
+			margin-left: 15px;
+		}
+		.body-content{
+			flex: 10;
+			-moz-flex: 10;
+			display: flex;
+			display: -moz-flex;
+			flex-direction: row;
+			-moz-flex-direction: row;
+		}
+		.left-navbar{
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.place-block{
+			display: flex;
+			display: -moz-flex;
+			flex-direction: row;
+			-moz-flex-direction: row;
+		}
+		.places{
+			margin-top: 50px;
+			margin-left: 60px;
+			color: #5C5C5C;
+			font-size: 12px;
+			font-family: sans-serif;
+		}
+		.place{
+			flex: 10;
+			-moz-flex: 10;
+			margin-top: -11px;
+			margin-left: 7px;
+		}
+		.list-body{
+			flex: 8;
+			-moz-flex: 8;
+		}
+		.information{
+			font-family: 'Open Sans',"Segoe UI","Century Gothic","Ubuntu","Arial",sans-serif;
+			font-style: italic;
+			color: #999999;
+		}
+		.right-bar{
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.footer{
+			width: 100%;
+			height: 50px;
+		}
+		.seperator-one{
+			flex: 1;
+			-moz-flex: 1;
+		}
+		.seperator-two{
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.seperator-three{
+			flex: 3;
+			-moz-flex: 3;			
+		}
+		.seperator-four{
+			flex: 4;
+			-moz-flex: 4;
+		}
+		.seperator-six{
+			flex: 6;
+			-moz-flex: 6;
+		}
+		.seperator-eight{
+			flex: 8;
+			-moz-flex: 8;
+		}
+		#home{
+			margin-top: 15px;
+		}
+		.row
+            {
+            text-align: left;
+            display: table;
+            background-color: white;
+            width: 100%; 
+            
+            border-spacing: 10px; 
+			border-bottom:thin;
+			border-bottom-color:#7f7f7f;
+			border-bottom-style:solid;
+			
+            }
+		.column1{
+			float:left;
+			padding-top: 2%;
+			padding-left: 2%;
+		}
+        .column2
+        {
+            float:left;
+			padding-left: 7%;
+			
+        }
+		.column3
+        {
+            float:right;
+			padding-left: 7%;
+			padding-top: 1%;
+			/*display: inline-block;*/
+			
+        }
+        #doc_img{
+        	width:130px;
+        }
+        #doc_name{
+        	color: #00BFFF;
+        }
+        #links {
+        	position: absolute;
+        	top: 10%;
+        	left:50%;
+        }
+        #linksPrev {
+        	position: relative;
+        	top:85%;
+        	left:30%;
+        }
+        #linksNext {
+        	position: relative;
+        	top:80%;
+        	left:70%;
+        }
+        a {
+        	color: #00BFFF;
+        }
+        a:visited {
+        	color: #00BFFF;
+        }
+	</style>
+	<head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<title>Search</title>
+		<script src="/static/bootstrap/js/jquery.min.js"></script>
+		<script src="/static/bower_components/webcomponentsjs/webcomponents.min.js"></script>
+		<link rel="import" href="/static/bower_components/components/paper-input/paper-input-decorator.html">
+		<link rel="import" href="/static/bower_components/components/paper-fab/paper-fab.html">
+		<link rel="import" href="/static/bower_components/components/paper-checkbox/paper-checkbox.html">
+		<link rel="import" href="/static/bower_components/components/doctor-card/doctor-card.html">
+	</head>
+	<body>
+		<div class="header">
+			<div class="header-left-items">
+				<a id="home" href="/search">
+					<img src="/static/images/practo.png" width="125" height="37" id="brand-image">
+				</a>
+			</div>
+			<div class="header-middle-items">
+				<div class="seperator-one"></div>
+				<paper-input-decorator class="address-search-bar seperator-four" label="eg. Koramangala">
+    						<input is="core-input" id="address-filter" style="margin-top: 0">
+				</paper-input-decorator>
+				<div class="seperator-one"></div>
+				<paper-input-decorator class="speciality-search-bar seperator-six" label="eg. Dentist, Pediatrician">
+    						<input is="core-input" id="speciality-filter" style="margin-top: 0">
+				</paper-input-decorator>
+				<div class="seperator-two"><paper-fab class="search-fab" mini icon="search"></paper-fab></div>
+			</div>
+			<div class="seperator-six"></div>
+		</div>
+		<div class="body-content">
+			<div class="left-navbar">
+				<div class="places">
+					<!--add data here for nearby places-->
+					{% for location in localities %}
+					<div class="place-block"><paper-checkbox></paper-checkbox><div class="place"><p>{{ location }}</p></div></div>
+					{% endfor %}
+				</div>
+			</div>
+			{% if results %}
+				<div class="list-body">
+					<p class="information">Showing {{ num }} results for {{ job }} in {{ address }}</p>
+					{% for result in results %}
+						<div class="row">
+							<div class="column1">
+								<img id="doc_img" src="/static/images/doctor.png">
+							</div>
+							<div class="column2">
+								<h3 id="doc_name" ><i id="doc_name" class="fa fa-user-md"></i> {{result[0].name}}</h3>
+								<p><i id="doc_name" class="fa fa-envelope-o"></i> {{result[0].email}}</p>
+								<p><i id="doc_name" class="fa fa-calendar"></i> {{result[0].experience}} years</p>
+							</div>
+							<div class="column3">
+								<p><i id="doc_name" class="fa fa-briefcase"></i> {{result[1].clinicName}}</p>
+								<p><i id="doc_name" class="fa fa-map-marker"></i> {{result[1].locality}}</p>
+								<p><i id="doc_name" class="fa fa-inr"></i> {{result[2]}}</p>
+								<p><i id="doc_name" class="fa fa-clock-o"></i> {{ result[3]}}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="right-bar"></div>
+			</div>
+			<div id = "links">
+					{% if page > 1 %}
+						<a href= '{{more['prevLink']}}'><i class="fa fa-arrow-left fa-2x"></i></a>
+					{% endif %}
+					{% if more['hasMore'] %}
+						<a href ='/search/{{address}}/{{job}}/{{more['nextLink']}}'><i class="fa fa-arrow-right fa-2x"></i></a>
+					{% endif %}
+			</div>
+			<div class="footer"></div>
+		</body>
+
+		{% else %}
+			<div class="list-body">
+				<h2>No results for that query</h2>
+			</div>
+		{% endif %}
+	<script type="text/javascript">
+		var fabBtn = $('.search-fab').bind("click",function(){
+			var specialityFilter = $("#speciality-filter").val();
+			var addressFilter = $("#address-filter").val();
+			console.log("speciality-filter: " + specialityFilter + " address-filter:" + addressFilter);
+			if(addressFilter == '' || specialityFilter == '')
+				return false;
+			var urlString = "http://localhost:5000/search/"+addressFilter+"/"+specialityFilter;
+			location.assign(urlString);
+		})
+	</script>
+</html>

@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Practo find doctors and books appointmnets</title>
+		<script src="/static/bootstrap/js/jquery.min.js"></script>
+		<script src="/static/bower_components/webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="/static/bower_components/components/paper-button/paper-button.html">
+		<link rel="import" href="/static/bower_components/components/paper-input/paper-input-decorator.html">
+		<link rel="import" href="/static/bower_components/components/paper-fab/paper-fab.html">
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"> </script>
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	</head>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			background: url(/static/images/background.png);
+		}
+		li{
+			display: inline;
+		}
+		paper-button{
+  			transform: translateY(-80%);
+  			color: #02a6d8;
+		}
+		paper-input-decorator /deep/ .focused-underline {
+    		background-color: #02a6d8;
+		}
+		paper-input-decorator /deep/ .unfocused-underline {
+    		background-color: grey;
+		}
+		paper-input-decorator{
+			color: #333;
+			font-style: italic;
+		}
+		.header-block{
+			border: none;
+			display: flex;
+			display: -moz-flex;
+			flex-direction: row;
+			-moz-flex-direction: row;
+			width: 100%;
+			height: 53px;
+			box-shadow: 2px 1px 2px #888888;
+		}
+		.header-left{
+			margin-top: 15px;
+			margin-left: 10px;
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.header-right-items{
+			margin-top: 20px;
+		}
+		.body-block{
+			position: relative;
+			width: 100%;
+			flex: 8;
+			-moz-flex: 8;
+			color: #02a6d8;
+			font-family: 'Open Sans',"Segoe UI","Century Gothic","Ubuntu","Arial",sans-serif;
+		}
+		.search-block{
+			position: absolute;
+			top: 250px;
+			background-color: transparent;
+			width: 100%;
+			display: flex;
+			display: -moz-flex;
+			-flex-direction: row;
+			-moz-flex-direction: row;
+		}
+		.step-block{
+			background: transparent;
+			display: flex;
+			display: -moz-flex;
+			-flex-direction: row;
+			-moz-flex-direction: row;
+			margin-top: 5%;
+		}
+		.step-image{
+			flex: 1.5;
+			-moz-flex: 1.5;
+		}
+		.search-button{
+			position: absolute;
+			top: 325px;
+			width: 100%;
+			display: flex;
+			display: -moz-flex;
+			-flex-direction: row;
+			-moz-flex-direction: row;
+		}
+		.speciality-search-bar{
+			margin-left: 5%;
+			flex: 3;
+			-moz-flex: 3;
+		}
+		.address-search-bar{
+			margin-right: 5%;
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.search-wrapper{
+			border: solid;
+			border-color: black;
+			border-width: 1px;
+			border-radius: 12px;
+			border-color: #a9a9a9;
+			flex: 8;
+			-moz-flex: 8;
+			display: flex;
+			display: -moz-flex;
+			-flex-direction: row;
+			-moz-flex-direction: row;
+			background: #ffffff;
+			box-shadow: 1px 1px 1px #888888;
+		}
+		.seperator-one{
+			flex: 1;
+			-moz-flex: 1;
+		}
+		.seperator-two{
+			flex: 2;
+			-moz-flex: 2;
+		}
+		.seperator-three{
+			flex: 3;
+			-moz-flex: 3;
+		}
+		.seperator-four{
+			flex: 4;
+			-moz-flex: 4;
+		}
+		.seperator-six{
+			flex: 6;
+			-moz-flex: 6;
+		}
+		.seperator-eight{
+			flex: 8;
+			-moz-flex: 8;
+		}
+		.search-fab{
+			background: #02a6d8;
+		}
+		.footer-block{
+			width: 100%;
+			height: 50px;
+		}
+		.step-info{
+			color: #a9a9a9;
+			font-size: 16px;
+		}
+		#download-app{
+			margin-top: 2%;
+			margin-left: 8%;
+			border-style: solid;
+			border-color: #02a6d8;
+			width: 120px;
+		}
+		#download-app:hover{
+			color: #ffffff;
+			background-color: #02a6d8;
+		}
+	</style>
+	<body>
+		<div class="header-block">
+			<div class="header-left">
+			<a id="home" href="/search">
+				<img src="/static/images/practo.png" width="125" height="37" id="brand-image">
+			</a>
+			<paper-button raised id="download-app">Download App</paper-button>
+			</div>
+			<div class="header-right">
+				<ul>
+					<li><paper-button class="header-right-items">Sign In</paper-button></li>
+					<li><paper-button class="header-right-items">Register</paper-button></li>
+				</ul>
+			</div>
+		</div>
+		<div class="body-block" width="100%">
+			<div class="step-block">
+				<div class="seperator-eight"></div>
+				<img class="step-image" src="/static/images/search_grey.png" width="39" height="43">
+				<p class="step-info">Find a doctor</p>
+				<div class="seperator-eight"></div>
+				<img class="step-image" src="/static/images/clock_grey.png" width="40" height="48">
+				<p class="step-info">Pick a time</p>
+				<div class="seperator-eight"></div>
+				<img class="step-image" src="/static/images/doctor_grey.png" width="40" height="45">
+				<p class="step-info">Book an appointment</p>
+				<div class="seperator-eight"></div>
+			</div>
+			<form action="">
+				<div class="search-block">
+					<div class="seperator-four">
+					</div>
+					<div class="search-wrapper">
+						<div class="speciality-search-bar">
+							<paper-input-decorator class="seperator-three" label="eg. Dentist, Surgeon">
+	    						<input is="core-input" name ="speciality" id="speciality-filter" class="specializations">
+							</paper-input-decorator>
+						</div>
+						<div class="seperator-one">
+						</div>
+						<div class="address-search-bar">
+							<paper-input-decorator class="seperator-two" label="eg. Koramangala">
+	    						<input name="location" is="core-input" id="address-filter" >
+							</paper-input-decorator>
+						</div>
+					</div>
+					<div class="seperator-four">
+					</div>
+				</div>
+				<div class="search-button">
+					<div class="seperator-eight"></div>
+					<div class="seperator-one"></div>
+					<div class="seperator-one"><paper-fab class="search-fab" icon="search"></paper-fab></div>
+					<div class="seperator-two"></div>
+				</div>
+			</form>
+		</div>
+		<div class="footer-block">
+		</div>
+	</body>
+	<script type="text/javascript">
+
+			var fabBtn = $('.search-fab').bind("click",function(){
+			var specialityFilter = $("#speciality-filter").val();
+			var addressFilter = $("#address-filter").val();
+			//console.log("speciality-filter: " + specialityFilter + " address-filter:" + addressFilter);
+			if(specialityFilter == '' || addressFilter == '')
+				return false;
+			if(specialityFilter.length < 3 || addressFilter.length < 3)
+				return false;
+			var urlString = "http://localhost:5000/search/"+addressFilter+"/"+specialityFilter;
+			//alert(urlString);
+			window.open(urlString);
+		})
+
+		var downloadBtn = $('#download-app').bind('click', function(){
+			window.open('https://www.practo.com/mobile?c=buttonnearlogo&pid=mobileweb');
+		})
+	</script>
+</html>

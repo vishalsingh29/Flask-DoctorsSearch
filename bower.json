@@ -1,0 +1,17 @@
+{
+  "name": "Practo",
+  "version": "0.0.0",
+  "description": "Practor test website",
+  "main": "index.html",
+  "authors": [
+    "neelbakshi"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

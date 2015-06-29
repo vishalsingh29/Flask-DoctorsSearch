@@ -1,0 +1,37 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {{ messages[0] }}
+  {% endif %}
+{% endwith %}
+  <form method="POST" action="/">
+      <div id="mainDiv">
+          <h1>Doctor's Info</h1>
+          <div id="doctorInfo">
+              
+          <div class="panel panel-primary">
+      <div class = "panel-heading">
+  Personal</div>
+  <div class="panel-body">
+          <div>{{ form.name.label }}<br>{{ form.name() }}</div>
+          <div>{{ form.email.label }}<br>{{ form.email() }}</div>
+          <div>{{ form.phoneNumber.label }}<br>{{ form.phoneNumber() }}</div>
+          <div>{{ form.description.label }}<br>{{ form.description() }}</div>
+          <div>{{ form.education.label }}<br>{{ form.education() }}</div>
+          <div>{{ form.experience.label }}<br>{{ form.experience() }}</div>
+          <div>{{ form.speciality.label }}<br>{{form.speciality() }}</div> 
+  </div>
+          </div>
+          </div>
+          <br>
+          <br>
+          
+          <div> <button id="proceed" type="submit">Proceed</button></div>
+      </div>
+  </form>

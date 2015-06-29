@@ -1,0 +1,41 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+{% if errMsg %}
+<strong> {{ errMsg }}</strong><br>
+{% endif %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {{ messages[0] }}
+  {% endif %}
+{% endwith %}
+
+  <form method="POST" action="/addClinic/{{ doctor.id}}">
+      <div id="mainDiv">
+          <h1>Doctor's Info </h1>
+          <div id="doctorInfo">
+              
+          <div class="panel panel-primary">
+      <div class = "panel-heading">
+  Personal</div>
+  <div class="panel-body">
+          <div>{{ form.clinicName.label }}<br>{{ form.clinicName() }}</div>
+          <div>{{ form.locality.label }}<br>{{ form.locality() }}</div>
+          <div>{{ form.city.label }}<br>{{ form.city() }}</div>
+          <div>{{ form.address.label }}<br>{{ form.address() }}</div>
+          <div>{{ form.services.label }}<br>{{ form.services() }}</div>
+          <div><strong>Timings</strong><br> <input type="text" name="timings"></div>
+          <div><strong>Fees</strong><br> <input type="text" name="fees"></div>
+  </div>
+          </div>
+          </div>
+          <br>
+          <br>
+          
+          <div> <button id="proceed" type="submit">Proceed</button></div>
+      </div>
+  </form>

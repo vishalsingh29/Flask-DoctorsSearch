@@ -1,0 +1,12 @@
+{% if specialities %}
+	{% for s in specialities %}
+	<div>
+		{{ s.id }}
+		{{ s.specialityName }}
+	</div>
+	{% endfor %}
+{% else %}
+	<h2>No Specialities Listed</h2>
+{% endif %}
+
+<a href = "/">Home</a>
